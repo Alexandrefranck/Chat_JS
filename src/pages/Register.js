@@ -4,6 +4,8 @@ import background from "../images/background.png";
 import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase.config";
+import PasswordStrengthBar from 'react-password-strength-bar';
+
 
 
 const Login = styled.div`
@@ -113,7 +115,8 @@ export default function ({ setUser }) {
             const errorMessage = error.message;
             console.error(errorCode, errorMessage);
           });
-      }
+        }
+          
     return (
         <Login>
             <Container>
@@ -153,6 +156,7 @@ export default function ({ setUser }) {
                         required
                         onChange={(e) => setPassword(e.target.value)}
                     ></input>
+                    <PasswordStrengthBar password={password} />
 
                     <button type="submit">S'enregistrer</button>
                 </form>
